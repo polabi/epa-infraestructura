@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPA - Empresas Públicas de Armenia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #00693e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 { margin: 0; font-size: 28px; }
+        header p { margin: 5px 0 0; font-size: 14px; }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-left: 5px solid #00693e;
+        }
+        .card h2 { color: #00693e; margin-top: 0; }
+        .status { display: flex; gap: 12px; flex-wrap: wrap; }
+        .badge {
+            background: #e8f5e9;
+            color: #00693e;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EPA - Empresas Públicas de Armenia E.S.P.</h1>
+        <p>Portal de Infraestructura TI — Proyecto Final Administración de TI</p>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Estado de Servicios</h2>
+            <div class="status">
+                <span class="badge">✓ Nginx Activo</span>
+                <span class="badge">✓ Docker</span>
+                <span class="badge">✓ SRV-WEB-01</span>
+                <span class="badge">✓ VLAN 10 - DMZ</span>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Infraestructura</h2>
+            <p>Servidor web desplegado en contenedor Docker sobre Ubuntu Server 22.04.</p>
+            <p>IP: 192.168.1.10 | VLAN: 10 - DMZ</p>
+        </div>
+        <div class="card">
+            <h2>Equipo</h2>
+            <p>Proyecto desarrollado por estudiantes de Administración de TI — Universidad del Quindío.</p>
+        </div>
+    </div>
+    <footer>EPA E.S.P. © 2026 — Infraestructura TI</footer>
+</body>
+</html>
