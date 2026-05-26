@@ -1,0 +1,72 @@
+services:
+
+  # SRV-WEB-01 - Nginx
+  web:
+    build: ./services/web
+    container_name: srv-web-01
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - dmz_net
+
+  # SRV-DB-01 - PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: srv-db-01
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - /data/postgres/pgdata:/var/lib/postgresql/data/pgdata
+    networks:
+      - datos_net
+
+  # SRV-MGT-01 - NTP
+  ntp:
+    image: cturra/ntp:latest
+    container_name: srv-ntp
+    restart: unless-stopped
+    ports:
+      - "123:123/udp"
+    environment:
+      - NTP_SERVERS=pool.ntp.org
+    cap_add:
+      - SYS_TIME
+    networks:
+      - gestion_net
+
+  # SRV-MGT-01 - Samba
+  samba:
+    image: dperson/samba:latest
+    container_name: srv-samba
+    restart: unless-stopped
+    ports:
+      - "139:139"
+      - "445:445"
+    volumes:
+      - /compartido/iso9001:/share/iso9001
+      - /compartido/tmp:/share/tmp
+    environment:
+      - TZ=America/Bogota
+    command: >
+      -u "${SAMBA_USER};${SAMBA_PASSWORD}"
+      -s "iso9001;/share/iso9001;yes;no;no;${SAMBA_USER}"
+      -s "tmp;/share/tmp;yes;no;yes;${SAMBA_USER}"
+    networks:
+      - gestion_net
+
+networks:
+  dmz_net:
+    driver: bridge
+  datos_net:
+    driver: bridge
+  gestion_net:
+    driver: bridge
+  monitoreo_net:
+    driver: bridge
