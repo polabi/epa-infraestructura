@@ -35,5 +35,18 @@ Diseño e implementación de la infraestructura TI de las **Empresas Públicas d
 - UFW Firewall
 - SSH con llaves RSA 4096
 - Prometheus + Grafana
+
+## Infraestructura de Red
+
+La topología de red fue diseñada en Cisco Packet Tracer utilizando:
+- VLANs
+- Router-on-a-Stick
+- ACLs
+- Segmentación de servicios
+- Monitoreo y administración
+
+El archivo .pkt y el diagrama exportado se encuentran en:
+- /packettracer
+- /docs
 - Bash Scripts
 
