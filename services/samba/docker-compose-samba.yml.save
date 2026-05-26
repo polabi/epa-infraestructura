@@ -11,7 +11,6 @@ services:
       - /compartido/tmp:/share/tmp
     environment:
       - TZ=America/Bogota
-    command: >
-      -u "${SAMBA_USER};${SAMBA_PASSWORD}"
-      -s "iso9001;/share/iso9001;yes;no;no;${SAMBA_USER}"
-      -s "tmp;/share/tmp;yes;no;yes;${SAMBA_USER}"
+    command:
+  samba:
+   
